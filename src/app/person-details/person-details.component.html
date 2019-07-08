@@ -1,0 +1,77 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>Person Details</h1>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-bordered">
+      <tr>
+        <th>First Name</th>
+        <td>{{perosnInfo["firstName"]}}</td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td>{{perosnInfo["lastName"]}}</td>
+      </tr>
+      <tr>
+        <th>Father Name</th>
+        <td>{{perosnInfo["fathername"]}}</td>
+      </tr>
+      <tr>
+        <th>Mother Name</th>
+        <td>{{perosnInfo["mothername"]}}</td>
+      </tr>
+      <tr>
+        <th>Date of Birth</th>
+        <td>{{perosnInfo["birthdate"]}}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{perosnInfo["emailId"]}}</td>
+      </tr>
+      <tr>
+        <th>Mobile No.</th>
+        <td>{{perosnInfo["mobileno"]}}</td>
+      </tr>
+      <tr>
+        <th>NID</th>
+        <td>{{perosnInfo["nid_number"]}}</td>
+      </tr>
+      <tr>
+        <th>NID Image</th>
+        <td><img width="100" *ngIf="perosnInfo['nid_document_img']" [src]="perosnInfo['nid_document_img']"></td>
+      </tr>
+      <tr>
+        <th>Driving License Number</th>
+        <td>{{perosnInfo["driving_license_number"]}}</td>
+      </tr>
+      <tr>
+        <th>Driving License Issue Place</th>
+        <td>{{perosnInfo["driving_license_issue_place"]}}</td>
+      </tr>
+      <tr>
+        <th>Driving License Expire Date</th>
+        <td>{{perosnInfo["driving_license_expire_date"]}}</td>
+      </tr>
+      <tr>
+        <th>Driving License Image</th>
+        <td><img width="100" *ngIf="perosnInfo['driving_license_document_img']" [src]="perosnInfo['driving_license_document_img']"></td>
+      </tr>
+      <tr>
+        <th>Trade License Number</th>
+        <td>{{perosnInfo["trade_license_number"]}}</td>
+      </tr>
+      <tr>
+        <th>Trade License Issue Place</th>
+        <td>{{perosnInfo["trade_license_issue_place"]}}</td>
+      </tr>
+      <tr>
+        <th>Trade License Expire Date</th>
+        <td>{{perosnInfo["trade_license_expire_date"]}}</td>
+      </tr>
+      <tr>
+        <th>Trade License Image</th>
+        <td><img width="100" *ngIf="perosnInfo['trade_license_document_img']" [src]="perosnInfo['trade_license_document_img']"></td>
+      </tr>
+    </table>
+  </div>
+</div>

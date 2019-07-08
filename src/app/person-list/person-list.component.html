@@ -1,0 +1,152 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>Person Information</h1>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Father Name</th>
+        <th>Mother Name</th>
+        <th>Date of Birth</th>
+        <th>Email</th>
+        <th>Mobile No.</th>
+        <th>Upload</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of perosn | async">
+        <td>{{p.firstName}}</td>
+        <td>{{p.lastName}}</td>
+        <td>{{p.fathername}}</td>
+        <td>{{p.mothername}}</td>
+        <td>{{p.birthdate}}</td>
+        <td>{{p.emailId}}</td>
+        <td>{{p.mobileno}}</td>
+        <td>
+          <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Document Type
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#nid' + p.id" href="#">NID</a>
+              <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#dl' + p.id" href="#">Driving Licence</a>
+              <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#tl' + p.id" href="#">Trade Licence</a>
+            </div>
+          </div>
+          <!--model for NID-->
+          <div id="nid{{p.id}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Upload NID Information for {{p.firstName}} {{p.lastName}}</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form (ngSubmit)="onSubmitNid(p.id)">
+                    <div class="form-group">
+                      <label for="nid_number">NID Number</label>
+                      <input type="number" class="form-control" id="nid_number" required [(ngModel)]="nid.nid_number" name="nid_number">
+                    </div>
+                    <div class="form-group">
+                      <label for="nid_document_img">NID Document</label>
+                      <input type="file" class="form-control" (change)="onTinFileSelect($event)" id="nid_document_img" name="nid_document_img" accept="image/jpeg">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--model for Driving License-->
+          <div id="dl{{p.id}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Upload Driving License Information for {{p.firstName}} {{p.lastName}}</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form (ngSubmit)="onSubmitDrivingLicense(p.id)">
+                    <div class="form-group">
+                      <label for="driving_license_number">Driving License Number</label>
+                      <input type="text" class="form-control" id="driving_license_number" required [(ngModel)]="drivingLicense.driving_license_number" name="driving_license_number">
+                    </div>
+                    <div class="form-group">
+                      <label for="driving_license_issue_place">Driving License Issue Place</label>
+                      <input type="text" class="form-control" id="driving_license_issue_place" required [(ngModel)]="drivingLicense.driving_license_issue_place" name="driving_license_issue_place">
+                    </div>
+                    <div class="form-group">
+                      <label for="driving_license_expire_date">Driving License Expire Date</label>
+                      <input type="date" class="form-control" id="driving_license_expire_date" required [(ngModel)]="drivingLicense.driving_license_expire_date" name="driving_license_expire_date">
+                    </div>
+                    <div class="form-group">
+                      <label for="driving_license_document_img">Driving License Document</label>
+                      <input type="file" class="form-control" id="driving_license_document_img" (change)="onDLFileSelect($event)" name="driving_license_document_img" accept="image/jpeg">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--model for Trade License-->
+          <div id="tl{{p.id}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Upload Driving License Information for {{p.firstName}} {{p.lastName}}</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form (ngSubmit)="onSubmitTradeLicense(p.id)">
+                    <div class="form-group">
+                      <label for="trade_license_number">Trade License Number</label>
+                      <input type="text" class="form-control" id="trade_license_number" required [(ngModel)]="tradeLicense.trade_license_number" name="trade_license_number">
+                    </div>
+                    <div class="form-group">
+                      <label for="trade_license_issue_place">Trade License Issue Place</label>
+                      <input type="text" class="form-control" id="trade_license_issue_place" required [(ngModel)]="tradeLicense.trade_license_issue_place" name="trade_license_issue_place">
+                    </div>
+                    <div class="form-group">
+                      <label for="trade_license_expire_date">Trade License Expire Date</label>
+                      <input type="date" class="form-control" id="trade_license_expire_date" required [(ngModel)]="tradeLicense.trade_license_expire_date" name="trade_license_expire_date">
+                    </div>
+                    <div class="form-group">
+                      <label for="trade_license_document_img">Trade License Document</label>
+                      <input type="file" class="form-control" id="trade_license_document_img" (change)="onTLFileSelect($event)" name="trade_license_document_img" accept="image/jpeg">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <button (click)="detailsPerson(p.id)" class="btn btn-info">Details</button>
+          <button (click)="editPerson(p)" class="btn btn-warning">Edit</button>
+          <button (click)="deletePerson(p.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
