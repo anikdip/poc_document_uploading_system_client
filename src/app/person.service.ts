@@ -50,4 +50,48 @@ export class PersonService {
   uploadFile(fileInfo): Observable<Object> {
     return this.http.post(`${this.baseUrl}/upload`, fileInfo);
   }
+
+  createDocumentType(documentType: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/documentType`, documentType);
+  }
+
+  getDocumentTypeList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/documentType`);
+  }
+
+  updateDocumentType(id: string, documentType: Object): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/documentType/${id}`, documentType);
+  }
+
+  createDocumentTypeField(documentTypeField: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/documentTypeFields`, documentTypeField);
+  }
+
+  deleteDocumentType(id: number): Observable<Object> {
+    return this.http.delete(`${this.baseUrl}/documentType/${id}`, { responseType: 'text' });
+  }
+
+  getDocumentType(id: number) {
+    return this.http.get(`${this.baseUrl}/documentType/${id}`);
+  }
+
+  getDocumentTypeFieldList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/documentTypeFields`);
+  }
+
+  getDocumentTypeField(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/documentTypeFieldsByDocumentType/${id}`);
+  }
+
+  deleteDocumentTypeFields(id: number): Observable<Object> {
+    return this.http.delete(`${this.baseUrl}/deleteDocumentTypeFields/${id}`, { responseType: 'text' });
+  }
+
+  createPersonDocumentInfo(pdi: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/personDocumentInfo`, pdi);
+  }
+
+  getPersonDocumentInfoByPersonId(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/personDocumentInfo/${id}`);
+  }
 }
